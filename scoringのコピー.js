@@ -13,28 +13,25 @@ $(document).ready(function () {
       Number($('#society').val())
       ];
 
-      return subject_points;
+      // 変数「sum」に「国語、英語、数学、理科、社会」の点数を足します。
+      //sumという変数の中に上で数値に変換した変数subject_pointsを全部足してsumに代入している
+      //変数sumに合計点を表してる。
+      let sum = subject_points[0];
+      sum = sum + subject_points[1];
+      sum = sum + subject_points[2];
+      sum = sum + subject_points[3];
+      sum = sum + subject_points[4];
 
-      // ヒント：変数「average」に平均値を出して代入しましょう(平均をとりたい数の合計点数(sum) / 全体の個数)
-      // ヒント：全体の個数はlengthメソッドを使って求めます。(lengthメソッド: 文字列の長さや配列の要素数などを取得するメソッド)
-    };
-
-    //ここから
-    //関数の中で定義した変数は関数の中でしか使えない。
-    function sum_average () {
-
-      let subject_scores = score_indicate();
-      let sum = subject_scores [0];
-      sum = sum + subject_scores[1];
-      sum = sum + subject_scores[2];
-      sum = sum + subject_scores[3];
-      sum = sum + subject_scores[4];
-
+      // 「合計点：」(id="sum_indicate")に変数「sum」(合計点)を出力させます。
+      //.text()内の変数を$()内のidにHTMLへ出力　＃はid classの場合は.class CSSと同様
+      //.textはメソッド　.のあとはメソッド
       $("#sum_indicate").text(sum);
 
-      let average = (sum / subject_scores.length);
+      // 「平均点：」に各教科の平均点を出力する処理を記述する。
+      let average = (sum / subject_points.length); //(sum.length) / 5?
       $("#average_indicate").text(average);
-
+      // ヒント：変数「average」に平均値を出して代入しましょう(平均をとりたい数の合計点数(sum) / 全体の個数)
+      // ヒント：全体の個数はlengthメソッドを使って求めます。(lengthメソッド: 文字列の長さや配列の要素数などを取得するメソッド)
     };
 
     // 平均点数を取得し、取得した平均点数から「A、B、C、D」にランク分けするロジックを記述する。
@@ -81,7 +78,7 @@ $(document).ready(function () {
       return judge;
     };
       // 最終的なジャッジのロジックを作ります。
-    function judgement() {
+      function judgement() {
       // 変数「achievement」に「get_achievement()の戻り値」を代入します。
       let achievement = get_achievement();
       // 変数「pass_or_failure」に「get_pass_or_failure()の戻り値」を代入します。
